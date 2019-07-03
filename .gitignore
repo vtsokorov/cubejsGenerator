@@ -1,0 +1,3 @@
+/cubejs/**.*.js
+/main/**.*.pyc
+/test.db

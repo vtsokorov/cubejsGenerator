@@ -1,0 +1,58 @@
+'''cube(`{{params.CUBENAME}}`, {
+        sql: `select * from {{params.TABLENAME}}`,
+
+        joins: { {% if 'JOINSCUBE' in params %} {% for itemMap in params.JOINSCUBE %}
+            {{itemMap.TARGETCUBENAME}}: {
+                 relationship: `{{itemMap.TYPE}}`,
+                 sql: `${ {{params.CUBENAME}} }.{{itemMap.FOREIGNKEY}} = ${ {{itemMap.TARGETCUBENAME}} }.{{itemMap.JOINID}}`
+            {% if loop.index == params.JOINSCUBE|length %} {{'}'}} {% else %} {{'},'}}  {% endif %} {% endfor %} {% endif %}
+        },
+
+        measures: {
+            count: {
+              type: `count`,
+              drillMembers: [{{params.COLUMNS[0]}}]
+            }
+        },
+
+        dimensions: { {% for item in params.DIMENSIONS %}
+            {{item.COLUMNNAME}}: {
+              sql: `{{item.COLUMNNAME}}`,
+              type: `{{item.COLUMNTYPES}}`{% if 'PRIMARYKEY' in item %}{{','}}
+              primaryKey: {{item.PRIMARYKEY}} {% endif %}
+            {% if loop.index == params.DIMENSIONS|length %}{{'}'}}{% else %}{{'},'}}{% endif %}{% endfor %}
+        }
+});
+'''
+
+
+'''
+cube(`{{params.CUBENAME}}`, {
+    sql: `select * from {{params.TABLENAME}}`,
+    {% if params.TITLE is defined %}title: `{{params.TITLE}}`,{% endif %}
+    {% for rootItem in params.CUBECONTENT %} {% for rootKey, rootValue in rootItem.items() %}
+    {{rootKey}}: { {% for item in rootValue %} {% for key, value in item.items() %}
+        {{key}}: { {% for subkey, subvalue in value.items() %}
+            {{subkey}}: {{subvalue}}{% if loop.index != value|length %}{{','}}{% endif %}{% endfor %}
+        {% endfor %} {% if loop.index == rootValue|length %}{{'}'}}{% else %}{{'},'}}{% endif %} {% endfor %}
+    }{% endfor %} {% endfor %}
+
+    joins: { {% for item in params.JOINSCUBE %} {% for key, value in item.items() %}
+        {{key}}: { {% for subkey, subvalue in value.items() %}
+            {{subkey}}: {{subvalue}}{% if loop.index != value|length %}{{','}}{% endif %}{% endfor %}
+        {% endfor %} {% if loop.index == params.JOINSCUBE|length %}{{'}'}}{% else %}{{'},'}}{% endif %} {% endfor %}
+    },
+
+    measures: { {% for item in params.MEASURES %} {% for key, value in item.items() %}
+        {{key}}: { {% for subkey, subvalue in value.items() %}
+            {{subkey}}: {{subvalue}}{% if loop.index != value|length %}{{','}}{% endif %}{% endfor %}
+        {% endfor %} {% if loop.index == params.MEASURES|length %}{{'}'}}{% else %}{{'},'}}{% endif %} {% endfor %}
+    },
+
+    dimensions: { {% for item in params.DIMENSIONS %} {% for key, value in item.items() %}
+        {{key}}: { {% for subkey, subvalue in value.items() %}
+            {{subkey}}: {{subvalue}}{% if loop.index != value|length %}{{','}}{% endif %}{% endfor %}
+        {% endfor %}{% if loop.index == params.DIMENSIONS|length %}{{'}'}}{% else %}{{'},'}}{% endif %} {% endfor %}
+    }
+});
+'''

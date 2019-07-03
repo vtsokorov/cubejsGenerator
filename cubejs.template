@@ -1,0 +1,10 @@
+cube(`{{params.CUBENAME}}`, {
+    sql: `select * from {{params.TABLENAME}}`,
+    {% if params.TITLE is defined %}title: `{{params.TITLE}}`,{% endif %}
+    {% for rootItem in params.CUBECONTENT %} {% for rootKey, rootValue in rootItem.items() %}
+    {{rootKey}}: { {% for item in rootValue %} {% for key, value in item.items() %}
+        {{key}}: { {% for subkey, subvalue in value.items() %}
+            {{subkey}}: {{subvalue}}{% if loop.index != value|length %}{{','}}{% endif %}{% endfor %}
+        {% endfor %} {% if loop.index == rootValue|length %}{{'}'}}{% else %}{{'},'}}{% endif %} {% endfor %}
+    {% endfor %}{% if loop.index == params.CUBECONTENT|length %}{{'}'}}{% else %}{{'},'}}{% endif %}{% endfor %}
+});
