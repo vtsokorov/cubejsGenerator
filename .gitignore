@@ -1,4 +1,3 @@
-/cubejs/*.js
 /main/__pycache__/*.pyc
 /main/models/__pycache__/*.pyc
 /test.db

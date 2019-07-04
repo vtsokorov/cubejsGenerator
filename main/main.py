@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys
 import os
+import re
 import fnmatch
 import inspect
 
@@ -13,23 +14,22 @@ from models.generalmodel import *
 
 def findModelsByTable(modelspath, tablename):
     listOfFiles = os.listdir(modelspath)
-    for entry in listOfFiles:
-        if fnmatch.fnmatch(entry, "*.py"):
-            modulename = entry.rsplit('.', 2)[0]
+    for file in listOfFiles:
+        if fnmatch.fnmatch(file, "*.py"):
+            modulename, ext = os.path.splitext(file)
             for name, classname in inspect.getmembers(sys.modules['models.'+modulename], inspect.isclass):
                 if classname.__tablename__ == tablename:
                     return classname
     return None
 
-
-def removeCharacter(string):
-    s = list(string)
-    for index, char in enumerate(s):
-        if char == '_':
-            del s[index]
-            s[index] = s[index].title()
-    return "".join(s)
-
+def getFactsModels(modelspath):
+    listOfFiles = os.listdir(modelspath)
+    for file in listOfFiles:
+        if fnmatch.fnmatch(file, "*.py"):
+            modulename, ext = os.path.splitext(file)
+            for name, classname in inspect.getmembers(sys.modules['models.'+modulename], inspect.isclass):
+                if re.match(r".*_facts$", classname.__tablename__):
+                    yield classname
 
 def addQuotes(line):
     return '`' + line + '`'
@@ -39,7 +39,11 @@ def addBrackets(line):
     return '[' + line + ']'
 
 
-def cubejsGenerator(model):
+def cubejsGenerator(model, modelspath, cubejspath):
+
+    if os.path.exists(cubejspath+'/'+model.__name__+'.js'):
+        return
+
     table = model.metadata.tables[model.__tablename__]
     params = dict()
     params['CUBENAME'] = model.__name__
@@ -49,7 +53,7 @@ def cubejsGenerator(model):
     if hasattr(model, '__humanname__'):
         params['TITLE'] = model.__humanname__
 
-    mapTypes = {'Integer': 'number', 'String': 'string', 'Unicode': 'string', 'Numeric': 'number', 'DateTime': 'datatime', 'Date': 'date'}
+    mapTypes = {'Integer': 'number', 'String': 'string', 'Unicode': 'string', 'Numeric': 'number', 'DateTime': 'string', 'Date': 'date', 'Boolean': 'string'}
 
     dimensionlist = list()
     joinsList = list()
@@ -61,9 +65,8 @@ def cubejsGenerator(model):
         if len(column.foreign_keys) != 0:
             fk = next(iter(column.foreign_keys))
             mainTable, pkIndex = fk._get_colspec().rsplit('.', 2)
-            modelspath = os.path.dirname(os.path.abspath(__file__))+'/models'
             dinamycModel = findModelsByTable(modelspath, mainTable)
-            cubejsGenerator(dinamycModel)
+            cubejsGenerator(dinamycModel, modelspath, cubejspath)
             if mainTable in model.__mapper__.relationships.keys():
                 join = addQuotes('${'+model.__name__+'}.'+column.name+' = ${'+dinamycModel.__name__+'}.'+pkIndex)
                 joinsList.append({dinamycModel.__name__: {'relationship': addQuotes('belongsTo'), 'sql': join}})
@@ -87,10 +90,10 @@ def cubejsGenerator(model):
                     dimensionMap[column.name].update({'title': addQuotes(column.info['verbose_name'])})
                 dimensionlist.append(dimensionMap)
     params['CUBECONTENT'] = [{'joins': joinsList}, {'measures': measureslist}, {'dimensions': dimensionlist}]
-    
+
     template = Template(open('cubejs.template').read())
     cube = template.render(params=params)
-    with open('cubejs/'+model.__name__+'.js', 'w') as f:
+    with open(cubejspath+'/'+model.__name__+'.js', 'w') as f:
         f.write(cube)
     return cube
 
@@ -98,7 +101,11 @@ def cubejsGenerator(model):
 def main():
 
     db.create_all()
-    cube = cubejsGenerator(AnalyticsSessionFact)
+
+    modelspath = './main/models'
+    for fact in getFactsModels(modelspath):
+        cube = cubejsGenerator(fact, modelspath, './cubejs')
+        print(fact)
 
 if __name__ == '__main__':
     main()
