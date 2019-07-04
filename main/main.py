@@ -64,7 +64,7 @@ def cubejsGenerator(model, modelspath, cubejspath, measuretypes = dict()):
         dimensionMap = dict()
         measuresMap = dict()
 
-        if len(column.foreign_keys) != 0:
+        if bool(column.foreign_keys):
             fk = next(iter(column.foreign_keys))
             mainTable, pkIndex = fk._get_colspec().rsplit('.', 2)
             dinamycModel = findModelsByTable(modelspath, mainTable)
