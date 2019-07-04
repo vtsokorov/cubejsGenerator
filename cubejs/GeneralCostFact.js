@@ -1,6 +1,6 @@
 cube(`GeneralCostFact`, {
     sql: `select * from general_costs_facts`,
-    title: `Статистика по расходам`,
+    title: `РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕ СЂР°СЃС…РѕРґР°Рј`,
      
     joins: {  
         GeneralDate: { 
@@ -24,22 +24,22 @@ cube(`GeneralCostFact`, {
         account_id: { 
             sql: `account_id`,
             type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
+            title: `РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕРґРєР»СЋС‡РµРЅРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°`
          },  
         impressions: { 
             sql: `impressions`,
             type: `sum`,
-            title: `Показы`
+            title: `РџРѕРєР°Р·С‹`
          },  
         clicks: { 
             sql: `clicks`,
             type: `sum`,
-            title: `Клики`
+            title: `РљР»РёРєРё`
          },  
         cost: { 
             sql: `cost`,
             type: `sum`,
-            title: `Расходы`
+            title: `Р Р°СЃС…РѕРґС‹`
          } 
     }, 
     dimensions: {  

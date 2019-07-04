@@ -1,6 +1,6 @@
 cube(`AnalyticsGoalFact`, {
     sql: `select * from analytics_goals_facts`,
-    title: `Достигнутые цели`,
+    title: `Р”РѕСЃС‚РёРіРЅСѓС‚С‹Рµ С†РµР»Рё`,
      
     joins: {  
         GeneralDate: { 
@@ -40,17 +40,17 @@ cube(`AnalyticsGoalFact`, {
         account_id: { 
             sql: `account_id`,
             type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
+            title: `РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕРґРєР»СЋС‡РµРЅРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°`
          },  
         completions: { 
             sql: `completions`,
             type: `sum`,
-            title: `Количество`
+            title: `РљРѕР»РёС‡РµСЃС‚РІРѕ`
          },  
         goal_value: { 
             sql: `goal_value`,
             type: `sum`,
-            title: `Ценность`
+            title: `Р¦РµРЅРЅРѕСЃС‚СЊ`
          } 
     }, 
     dimensions: {  

@@ -1,6 +1,6 @@
 cube(`GeneralSite`, {
     sql: `select * from general_sites`,
-    title: `Параметры сайтов`,
+    title: `РџР°СЂР°РјРµС‚СЂС‹ СЃР°Р№С‚РѕРІ`,
      
     joins: { 
     }, 
@@ -19,12 +19,12 @@ cube(`GeneralSite`, {
         domain: { 
             sql: `domain`,
             type: `string`,
-            title: `Доменное имя`
+            title: `Р”РѕРјРµРЅРЅРѕРµ РёРјСЏ`
          },  
         description: { 
             sql: `description`,
             type: `string`,
-            title: `Описание`
+            title: `РћРїРёСЃР°РЅРёРµ`
          } 
     }
 });

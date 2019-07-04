@@ -1,6 +1,6 @@
 cube(`AnalyticsTransactionFact`, {
     sql: `select * from analytics_transactions_facts`,
-    title: `Оформленные заказы`,
+    title: `РћС„РѕСЂРјР»РµРЅРЅС‹Рµ Р·Р°РєР°Р·С‹`,
      
     joins: {  
         GeneralDate: { 
@@ -40,22 +40,22 @@ cube(`AnalyticsTransactionFact`, {
         account_id: { 
             sql: `account_id`,
             type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
+            title: `РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕРґРєР»СЋС‡РµРЅРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°`
          },  
         revenue: { 
             sql: `revenue`,
             type: `sum`,
-            title: `Доход`
+            title: `Р”РѕС…РѕРґ`
          },  
         shipping: { 
             sql: `shipping`,
             type: `sum`,
-            title: `Доставка`
+            title: `Р”РѕСЃС‚Р°РІРєР°`
          },  
         tax: { 
             sql: `tax`,
             type: `sum`,
-            title: `Налог`
+            title: `РќР°Р»РѕРі`
          } 
     }, 
     dimensions: {  

@@ -1,6 +1,6 @@
 cube(`GeneralLocation`, {
     sql: `select * from general_locations`,
-    title: `Параметры местоположений`,
+    title: `РџР°СЂР°РјРµС‚СЂС‹ РјРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёР№`,
      
     joins: { 
     }, 
@@ -19,37 +19,37 @@ cube(`GeneralLocation`, {
         country_iso: { 
             sql: `country_iso`,
             type: `string`,
-            title: `Код страны`
+            title: `РљРѕРґ СЃС‚СЂР°РЅС‹`
          },  
         country: { 
             sql: `country`,
             type: `string`,
-            title: `Страна`
+            title: `РЎС‚СЂР°РЅР°`
          },  
         region_iso: { 
             sql: `region_iso`,
             type: `string`,
-            title: `Код региона`
+            title: `РљРѕРґ СЂРµРіРёРѕРЅР°`
          },  
         region: { 
             sql: `region`,
             type: `string`,
-            title: `Регион`
+            title: `Р РµРіРёРѕРЅ`
          },  
         city: { 
             sql: `city`,
             type: `string`,
-            title: `Город`
+            title: `Р“РѕСЂРѕРґ`
          },  
         latitude: { 
             sql: `latitude`,
             type: `string`,
-            title: `Широта`
+            title: `РЁРёСЂРѕС‚Р°`
          },  
         longitude: { 
             sql: `longitude`,
             type: `string`,
-            title: `Долгота`
+            title: `Р”РѕР»РіРѕС‚Р°`
          },  
         location_hash: { 
             sql: `location_hash`,

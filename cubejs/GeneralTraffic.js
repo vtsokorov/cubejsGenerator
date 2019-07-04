@@ -1,6 +1,6 @@
 cube(`GeneralTraffic`, {
     sql: `select * from general_traffic`,
-    title: `Параметры трафика`,
+    title: `РџР°СЂР°РјРµС‚СЂС‹ С‚СЂР°С„РёРєР°`,
      
     joins: { 
     }, 
@@ -19,42 +19,42 @@ cube(`GeneralTraffic`, {
         grouping: { 
             sql: `grouping`,
             type: `string`,
-            title: `Название группы`
+            title: `РќР°Р·РІР°РЅРёРµ РіСЂСѓРїРїС‹`
          },  
         source: { 
             sql: `source`,
             type: `string`,
-            title: `Источник`
+            title: `РСЃС‚РѕС‡РЅРёРє`
          },  
         medium: { 
             sql: `medium`,
             type: `string`,
-            title: `Канал`
+            title: `РљР°РЅР°Р»`
          },  
         campaign: { 
             sql: `campaign`,
             type: `string`,
-            title: `Кампания`
+            title: `РљР°РјРїР°РЅРёСЏ`
          },  
         content: { 
             sql: `content`,
             type: `string`,
-            title: `Объявление`
+            title: `РћР±СЉСЏРІР»РµРЅРёРµ`
          },  
         keyword: { 
             sql: `keyword`,
             type: `string`,
-            title: `Ключевое слово`
+            title: `РљР»СЋС‡РµРІРѕРµ СЃР»РѕРІРѕ`
          },  
         landing_page: { 
             sql: `landing_page`,
             type: `string`,
-            title: `Страница входа`
+            title: `РЎС‚СЂР°РЅРёС†Р° РІС…РѕРґР°`
          },  
         traffic_hash: { 
             sql: `traffic_hash`,
             type: `string`,
-            title: `Хэш траффика`
+            title: `РҐСЌС€ С‚СЂР°С„С„РёРєР°`
          } 
     }
 });

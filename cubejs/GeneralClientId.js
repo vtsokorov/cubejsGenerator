@@ -1,6 +1,6 @@
 cube(`GeneralClientId`, {
     sql: `select * from general_clientids`,
-    title: `Параметры посетителей`,
+    title: `РџР°СЂР°РјРµС‚СЂС‹ РїРѕСЃРµС‚РёС‚РµР»РµР№`,
      
     joins: { 
     }, 
@@ -19,22 +19,22 @@ cube(`GeneralClientId`, {
         clientid: { 
             sql: `clientid`,
             type: `string`,
-            title: `Идентификатор посетителя сайта`
+            title: `РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕСЃРµС‚РёС‚РµР»СЏ СЃР°Р№С‚Р°`
          },  
         userid: { 
             sql: `userid`,
             type: `string`,
-            title: `Идентификатор пользователя`
+            title: `РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ`
          },  
         phone: { 
             sql: `phone`,
             type: `string`,
-            title: `Телефон клиента`
+            title: `РўРµР»РµС„РѕРЅ РєР»РёРµРЅС‚Р°`
          },  
         email: { 
             sql: `email`,
             type: `string`,
-            title: `e-mail клиента`
+            title: `e-mail РєР»РёРµРЅС‚Р°`
          } 
     }
 });

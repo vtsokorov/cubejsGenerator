@@ -1,6 +1,6 @@
 cube(`AnalyticsDevice`, {
     sql: `select * from analytics_devices`,
-    title: `Параметры устройств`,
+    title: `РџР°СЂР°РјРµС‚СЂС‹ СѓСЃС‚СЂРѕР№СЃС‚РІ`,
      
     joins: { 
     }, 
@@ -12,7 +12,7 @@ cube(`AnalyticsDevice`, {
         account_id: { 
             sql: `account_id`,
             type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
+            title: `РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕРґРєР»СЋС‡РµРЅРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°`
          } 
     }, 
     dimensions: {  
@@ -24,27 +24,27 @@ cube(`AnalyticsDevice`, {
         category: { 
             sql: `category`,
             type: `string`,
-            title: `Тип устройства`
+            title: `РўРёРї СѓСЃС‚СЂРѕР№СЃС‚РІР°`
          },  
         browser: { 
             sql: `browser`,
             type: `string`,
-            title: `Браузер`
+            title: `Р‘СЂР°СѓР·РµСЂ`
          },  
         browser_version: { 
             sql: `browser_version`,
             type: `string`,
-            title: `Версия браузера`
+            title: `Р’РµСЂСЃРёСЏ Р±СЂР°СѓР·РµСЂР°`
          },  
         os: { 
             sql: `os`,
             type: `string`,
-            title: `Операционная система`
+            title: `РћРїРµСЂР°С†РёРѕРЅРЅР°СЏ СЃРёСЃС‚РµРјР°`
          },  
         os_version: { 
             sql: `os_version`,
             type: `string`,
-            title: `Версия операционной системы`
+            title: `Р’РµСЂСЃРёСЏ РѕРїРµСЂР°С†РёРѕРЅРЅРѕР№ СЃРёСЃС‚РµРјС‹`
          } 
     }
 });

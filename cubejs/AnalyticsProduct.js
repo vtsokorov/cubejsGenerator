@@ -1,6 +1,6 @@
 cube(`AnalyticsProduct`, {
     sql: `select * from analytics_products`,
-    title: `Параметры товаров`,
+    title: `РџР°СЂР°РјРµС‚СЂС‹ С‚РѕРІР°СЂРѕРІ`,
      
     joins: { 
     }, 
@@ -12,7 +12,7 @@ cube(`AnalyticsProduct`, {
         account_id: { 
             sql: `account_id`,
             type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
+            title: `РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕРґРєР»СЋС‡РµРЅРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°`
          } 
     }, 
     dimensions: {  
@@ -24,22 +24,22 @@ cube(`AnalyticsProduct`, {
         product_id: { 
             sql: `product_id`,
             type: `string`,
-            title: `Внутренний идентификатор товара`
+            title: `Р’РЅСѓС‚СЂРµРЅРЅРёР№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚РѕРІР°СЂР°`
          },  
         category: { 
             sql: `category`,
             type: `string`,
-            title: `Категория товара`
+            title: `РљР°С‚РµРіРѕСЂРёСЏ С‚РѕРІР°СЂР°`
          },  
         brand: { 
             sql: `brand`,
             type: `string`,
-            title: `Бренд товара`
+            title: `Р‘СЂРµРЅРґ С‚РѕРІР°СЂР°`
          },  
         name: { 
             sql: `name`,
             type: `string`,
-            title: `Наименование товара`
+            title: `РќР°РёРјРµРЅРѕРІР°РЅРёРµ С‚РѕРІР°СЂР°`
          } 
     }
 });

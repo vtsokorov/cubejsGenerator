@@ -1,6 +1,6 @@
 cube(`AnalyticsProductFact`, {
     sql: `select * from analytics_products_facts`,
-    title: `Приобретенный товар`,
+    title: `РџСЂРёРѕР±СЂРµС‚РµРЅРЅС‹Р№ С‚РѕРІР°СЂ`,
      
     joins: {  
         GeneralDate: { 
@@ -44,17 +44,17 @@ cube(`AnalyticsProductFact`, {
         account_id: { 
             sql: `account_id`,
             type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
+            title: `РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕРґРєР»СЋС‡РµРЅРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°`
          },  
         quantity: { 
             sql: `quantity`,
             type: `sum`,
-            title: `Количество`
+            title: `РљРѕР»РёС‡РµСЃС‚РІРѕ`
          },  
         item_revenue: { 
             sql: `item_revenue`,
             type: `sum`,
-            title: `Доход`
+            title: `Р”РѕС…РѕРґ`
          } 
     }, 
     dimensions: {  

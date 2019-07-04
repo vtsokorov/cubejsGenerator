@@ -1,6 +1,6 @@
 cube(`AnalyticsAttributionFact`, {
     sql: `select * from analytics_attributions_facts`,
-    title: `Атрибуция трафика`,
+    title: `РђС‚СЂРёР±СѓС†РёСЏ С‚СЂР°С„РёРєР°`,
      
     joins: {  
         GeneralDate: { 
@@ -36,27 +36,27 @@ cube(`AnalyticsAttributionFact`, {
         account_id: { 
             sql: `account_id`,
             type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
+            title: `РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕРґРєР»СЋС‡РµРЅРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°`
          },  
         processor_id: { 
             sql: `processor_id`,
             type: `sum`,
-            title: `Идентификатор задания`
+            title: `РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РґР°РЅРёСЏ`
          },  
         conversion_id: { 
             sql: `conversion_id`,
             type: `sum`,
-            title: `Идентификатор конверсии`
+            title: `РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РєРѕРЅРІРµСЂСЃРёРё`
          },  
         object_id: { 
             sql: `object_id`,
             type: `sum`,
-            title: `Идентификатор объекта`
+            title: `РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕР±СЉРµРєС‚Р°`
          },  
         session_number: { 
             sql: `session_number`,
             type: `sum`,
-            title: `Порядковый номер посещения`
+            title: `РџРѕСЂСЏРґРєРѕРІС‹Р№ РЅРѕРјРµСЂ РїРѕСЃРµС‰РµРЅРёСЏ`
          } 
     }, 
     dimensions: {  
@@ -68,7 +68,7 @@ cube(`AnalyticsAttributionFact`, {
         last_session: { 
             sql: `last_session`,
             type: `string`,
-            title: `Является ли последним посещением`
+            title: `РЇРІР»СЏРµС‚СЃСЏ Р»Рё РїРѕСЃР»РµРґРЅРёРј РїРѕСЃРµС‰РµРЅРёРµРј`
          } 
     }
 });

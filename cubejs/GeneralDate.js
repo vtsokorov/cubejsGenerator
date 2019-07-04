@@ -1,6 +1,6 @@
 cube(`GeneralDate`, {
     sql: `select * from general_dates`,
-    title: `Параметры дат`,
+    title: `РџР°СЂР°РјРµС‚СЂС‹ РґР°С‚`,
      
     joins: { 
     }, 
@@ -12,42 +12,42 @@ cube(`GeneralDate`, {
         year: { 
             sql: `year`,
             type: `sum`,
-            title: `Год`
+            title: `Р“РѕРґ`
          },  
         quarter: { 
             sql: `quarter`,
             type: `sum`,
-            title: `Номер квартала`
+            title: `РќРѕРјРµСЂ РєРІР°СЂС‚Р°Р»Р°`
          },  
         month: { 
             sql: `month`,
             type: `sum`,
-            title: `Номер месяца`
+            title: `РќРѕРјРµСЂ РјРµСЃСЏС†Р°`
          },  
         week: { 
             sql: `week`,
             type: `sum`,
-            title: `Номер недели`
+            title: `РќРѕРјРµСЂ РЅРµРґРµР»Рё`
          },  
         weekday: { 
             sql: `weekday`,
             type: `sum`,
-            title: `Номер дня недели`
+            title: `РќРѕРјРµСЂ РґРЅСЏ РЅРµРґРµР»Рё`
          },  
         day: { 
             sql: `day`,
             type: `sum`,
-            title: `День`
+            title: `Р”РµРЅСЊ`
          },  
         hour: { 
             sql: `hour`,
             type: `sum`,
-            title: `Час`
+            title: `Р§Р°СЃ`
          },  
         minute: { 
             sql: `minute`,
             type: `sum`,
-            title: `Минута`
+            title: `РњРёРЅСѓС‚Р°`
          } 
     }, 
     dimensions: {  
@@ -56,30 +56,25 @@ cube(`GeneralDate`, {
             type: `number`,
             primaryKey: true
          },  
-        full_date: { 
-            sql: `full_date`,
-            type: `string`,
-            title: `Дата и время`
-         },  
         quarter_label: { 
             sql: `quarter_label`,
             type: `string`,
-            title: `Квартал`
+            title: `РљРІР°СЂС‚Р°Р»`
          },  
         month_label: { 
             sql: `month_label`,
             type: `string`,
-            title: `Месяц`
+            title: `РњРµСЃСЏС†`
          },  
         weekday_label: { 
             sql: `weekday_label`,
             type: `string`,
-            title: `День недели`
+            title: `Р”РµРЅСЊ РЅРµРґРµР»Рё`
          },  
         date_hash: { 
             sql: `date_hash`,
             type: `string`,
-            title: `Хеш-сумма записи`
+            title: `РҐРµС€-СЃСѓРјРјР° Р·Р°РїРёСЃРё`
          } 
     }
 });

@@ -1,6 +1,6 @@
 cube(`AnalyticsEventFact`, {
     sql: `select * from analytics_events_facts`,
-    title: `Достигнутые события`,
+    title: `Р”РѕСЃС‚РёРіРЅСѓС‚С‹Рµ СЃРѕР±С‹С‚РёСЏ`,
      
     joins: {  
         GeneralDate: { 
@@ -40,22 +40,22 @@ cube(`AnalyticsEventFact`, {
         account_id: { 
             sql: `account_id`,
             type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
+            title: `РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕРґРєР»СЋС‡РµРЅРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°`
          },  
         total_events: { 
             sql: `total_events`,
             type: `sum`,
-            title: `Количество`
+            title: `РљРѕР»РёС‡РµСЃС‚РІРѕ`
          },  
         unique_events: { 
             sql: `unique_events`,
             type: `sum`,
-            title: `Количество уникальных`
+            title: `РљРѕР»РёС‡РµСЃС‚РІРѕ СѓРЅРёРєР°Р»СЊРЅС‹С…`
          },  
         event_value: { 
             sql: `event_value`,
             type: `sum`,
-            title: `Ценность`
+            title: `Р¦РµРЅРЅРѕСЃС‚СЊ`
          } 
     }, 
     dimensions: {  

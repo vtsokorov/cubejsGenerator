@@ -1,6 +1,6 @@
 cube(`AnalyticsCostFact`, {
     sql: `select * from analytics_costs_facts`,
-    title: `Статистика по объявлениям`,
+    title: `РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РѕР±СЉСЏРІР»РµРЅРёСЏРј`,
      
     joins: {  
         GeneralDate: { 
@@ -24,52 +24,52 @@ cube(`AnalyticsCostFact`, {
         account_id: { 
             sql: `account_id`,
             type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
+            title: `РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕРґРєР»СЋС‡РµРЅРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°`
          },  
         impressions_context: { 
             sql: `impressions_context`,
             type: `sum`,
-            title: `Показы в рекламной сети`
+            title: `РџРѕРєР°Р·С‹ РІ СЂРµРєР»Р°РјРЅРѕР№ СЃРµС‚Рё`
          },  
         impressions_search: { 
             sql: `impressions_search`,
             type: `sum`,
-            title: `Показы на поиске`
+            title: `РџРѕРєР°Р·С‹ РЅР° РїРѕРёСЃРєРµ`
          },  
         impressions: { 
             sql: `impressions`,
             type: `sum`,
-            title: `Показы`
+            title: `РџРѕРєР°Р·С‹`
          },  
         clicks_context: { 
             sql: `clicks_context`,
             type: `sum`,
-            title: `Клики в рекламной сети`
+            title: `РљР»РёРєРё РІ СЂРµРєР»Р°РјРЅРѕР№ СЃРµС‚Рё`
          },  
         clicks_search: { 
             sql: `clicks_search`,
             type: `sum`,
-            title: `Клики на поиске`
+            title: `РљР»РёРєРё РЅР° РїРѕРёСЃРєРµ`
          },  
         clicks: { 
             sql: `clicks`,
             type: `sum`,
-            title: `Клики`
+            title: `РљР»РёРєРё`
          },  
         cost_context: { 
             sql: `cost_context`,
             type: `sum`,
-            title: `Расходы в рекламной сети`
+            title: `Р Р°СЃС…РѕРґС‹ РІ СЂРµРєР»Р°РјРЅРѕР№ СЃРµС‚Рё`
          },  
         cost_search: { 
             sql: `cost_search`,
             type: `sum`,
-            title: `Расходы на поиске`
+            title: `Р Р°СЃС…РѕРґС‹ РЅР° РїРѕРёСЃРєРµ`
          },  
         cost: { 
             sql: `cost`,
             type: `sum`,
-            title: `Расходы`
+            title: `Р Р°СЃС…РѕРґС‹`
          } 
     }, 
     dimensions: {  

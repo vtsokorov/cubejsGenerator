@@ -10,6 +10,7 @@ from jinja2 import Template
 from app import *
 from models.googlemodels import *
 from models.generalmodel import *
+from models.comagic import *
 
 
 def findModelsByTable(modelspath, tablename):
@@ -53,7 +54,7 @@ def cubejsGenerator(model, modelspath, cubejspath):
     if hasattr(model, '__humanname__'):
         params['TITLE'] = model.__humanname__
 
-    mapTypes = {'Integer': 'number', 'String': 'string', 'Unicode': 'string', 'Numeric': 'number', 'DateTime': 'string', 'Date': 'date', 'Boolean': 'string'}
+    mapTypes = {'Integer': 'number', 'String': 'string', 'Unicode': 'string', 'Numeric': 'number', 'DateTime': 'time', 'Date': 'time', 'Boolean': 'string'}
 
     dimensionlist = list()
     joinsList = list()
@@ -93,7 +94,7 @@ def cubejsGenerator(model, modelspath, cubejspath):
 
     template = Template(open('cubejs.template').read())
     cube = template.render(params=params)
-    with open(cubejspath+'/'+model.__name__+'.js', 'w') as f:
+    with open(cubejspath+'/'+model.__name__+'.js', 'w', encoding="utf-8") as f:
         f.write(cube)
     return cube
 

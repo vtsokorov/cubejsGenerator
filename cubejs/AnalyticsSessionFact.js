@@ -1,6 +1,6 @@
 cube(`AnalyticsSessionFact`, {
     sql: `select * from analytics_sessions_facts`,
-    title: `Посещения сайта`,
+    title: `РџРѕСЃРµС‰РµРЅРёСЏ СЃР°Р№С‚Р°`,
      
     joins: {  
         GeneralDate: { 
@@ -36,27 +36,27 @@ cube(`AnalyticsSessionFact`, {
         account_id: { 
             sql: `account_id`,
             type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
+            title: `РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕРґРєР»СЋС‡РµРЅРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°`
          },  
         sessions: { 
             sql: `sessions`,
             type: `sum`,
-            title: `Сессии`
+            title: `РЎРµСЃСЃРёРё`
          },  
         bounces: { 
             sql: `bounces`,
             type: `sum`,
-            title: `Отказы`
+            title: `РћС‚РєР°Р·С‹`
          },  
         pageviews: { 
             sql: `pageviews`,
             type: `sum`,
-            title: `Просмотры страниц`
+            title: `РџСЂРѕСЃРјРѕС‚СЂС‹ СЃС‚СЂР°РЅРёС†`
          },  
         duration: { 
             sql: `duration`,
             type: `sum`,
-            title: `Продолжительность`
+            title: `РџСЂРѕРґРѕР»Р¶РёС‚РµР»СЊРЅРѕСЃС‚СЊ`
          } 
     }, 
     dimensions: {  
@@ -68,12 +68,12 @@ cube(`AnalyticsSessionFact`, {
         session_id: { 
             sql: `session_id`,
             type: `string`,
-            title: `Идентификатор сеанса`
+            title: `РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃРµР°РЅСЃР°`
          },  
         user_type: { 
             sql: `user_type`,
             type: `string`,
-            title: `Тип пользователя`
+            title: `РўРёРї РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ`
          } 
     }
 });

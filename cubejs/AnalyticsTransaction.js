@@ -1,6 +1,6 @@
 cube(`AnalyticsTransaction`, {
     sql: `select * from analytics_transactions`,
-    title: `Параметры заказов`,
+    title: `РџР°СЂР°РјРµС‚СЂС‹ Р·Р°РєР°Р·РѕРІ`,
      
     joins: { 
     }, 
@@ -12,7 +12,7 @@ cube(`AnalyticsTransaction`, {
         account_id: { 
             sql: `account_id`,
             type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
+            title: `РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕРґРєР»СЋС‡РµРЅРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°`
          } 
     }, 
     dimensions: {  
@@ -24,12 +24,12 @@ cube(`AnalyticsTransaction`, {
         transaction_id: { 
             sql: `transaction_id`,
             type: `string`,
-            title: `Внутренний идентификатор транзакции`
+            title: `Р’РЅСѓС‚СЂРµРЅРЅРёР№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚СЂР°РЅР·Р°РєС†РёРё`
          },  
         unique_id: { 
             sql: `unique_id`,
             type: `string`,
-            title: `Уникальный идентификатор`
+            title: `РЈРЅРёРєР°Р»СЊРЅС‹Р№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ`
          } 
     }
 });

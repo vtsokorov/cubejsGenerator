@@ -1,6 +1,6 @@
 cube(`AnalyticsGoal`, {
     sql: `select * from analytics_goals`,
-    title: `Параметры целей`,
+    title: `РџР°СЂР°РјРµС‚СЂС‹ С†РµР»РµР№`,
      
     joins: { 
     }, 
@@ -12,12 +12,12 @@ cube(`AnalyticsGoal`, {
         account_id: { 
             sql: `account_id`,
             type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
+            title: `РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕРґРєР»СЋС‡РµРЅРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°`
          },  
         goal_id: { 
             sql: `goal_id`,
             type: `sum`,
-            title: `Внутренний идентификатор цели`
+            title: `Р’РЅСѓС‚СЂРµРЅРЅРёР№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С†РµР»Рё`
          } 
     }, 
     dimensions: {  
@@ -29,12 +29,12 @@ cube(`AnalyticsGoal`, {
         name: { 
             sql: `name`,
             type: `string`,
-            title: `Наименование цели`
+            title: `РќР°РёРјРµРЅРѕРІР°РЅРёРµ С†РµР»Рё`
          },  
         active: { 
             sql: `active`,
             type: `string`,
-            title: `Активность`
+            title: `РђРєС‚РёРІРЅРѕСЃС‚СЊ`
          } 
     }
 });

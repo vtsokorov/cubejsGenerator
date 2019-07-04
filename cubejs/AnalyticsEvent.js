@@ -1,6 +1,6 @@
 cube(`AnalyticsEvent`, {
     sql: `select * from analytics_events`,
-    title: `Параметры событий`,
+    title: `РџР°СЂР°РјРµС‚СЂС‹ СЃРѕР±С‹С‚РёР№`,
      
     joins: { 
     }, 
@@ -12,7 +12,7 @@ cube(`AnalyticsEvent`, {
         account_id: { 
             sql: `account_id`,
             type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
+            title: `РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕРґРєР»СЋС‡РµРЅРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°`
          } 
     }, 
     dimensions: {  
@@ -24,17 +24,17 @@ cube(`AnalyticsEvent`, {
         category: { 
             sql: `category`,
             type: `string`,
-            title: `Категория события`
+            title: `РљР°С‚РµРіРѕСЂРёСЏ СЃРѕР±С‹С‚РёСЏ`
          },  
         action: { 
             sql: `action`,
             type: `string`,
-            title: `Действие события`
+            title: `Р”РµР№СЃС‚РІРёРµ СЃРѕР±С‹С‚РёСЏ`
          },  
         label: { 
             sql: `label`,
             type: `string`,
-            title: `Метка события`
+            title: `РњРµС‚РєР° СЃРѕР±С‹С‚РёСЏ`
          } 
     }
 });
