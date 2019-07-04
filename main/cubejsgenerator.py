@@ -12,20 +12,22 @@ def findModelsByTable(modelspath, tablename):
     for file in listOfFiles:
         if fnmatch.fnmatch(file, "*.py"):
             modulename, ext = os.path.splitext(file)
-            for name, classname in inspect.getmembers(sys.modules['models.'+modulename], inspect.isclass):
-                if classname.__tablename__ == tablename:
-                    return classname
+            if 'models.'+modulename in sys.modules:
+                for name, classname in inspect.getmembers(sys.modules['models.'+modulename], inspect.isclass):
+                    if classname.__tablename__ == tablename:
+                        return classname
     return None
 
 
-def getFactsModels(modelspath):
+def factsModels(modelspath):
     listOfFiles = os.listdir(modelspath)
     for file in listOfFiles:
         if fnmatch.fnmatch(file, "*.py"):
             modulename, ext = os.path.splitext(file)
-            for name, classname in inspect.getmembers(sys.modules['models.'+modulename], inspect.isclass):
-                if re.match(r".*_facts$", classname.__tablename__):
-                    yield classname
+            if 'models.'+modulename in sys.modules:
+                for name, classname in inspect.getmembers(sys.modules['models.'+modulename], inspect.isclass):
+                    if re.match(r".*_facts$", classname.__tablename__):
+                        yield classname
 
 
 def addQuotes(line):
@@ -38,7 +40,7 @@ def addBrackets(line):
 
 def cubejsGenerator(model, modelspath, cubejspath, measuretypes = dict()):
 
-    if os.path.exists(cubejspath+'/'+model.__name__+'.js'):
+    if not hasattr(model, '__name__') or os.path.exists(cubejspath+'/'+model.__name__+'.js'):
         return
 
     table = model.metadata.tables[model.__tablename__]
@@ -95,3 +97,9 @@ def cubejsGenerator(model, modelspath, cubejspath, measuretypes = dict()):
         f.write(cube)
     return cube
 
+
+def convertModeltoCubejs(modelspath, cubepath):
+    for fact in factsModels(modelspath):
+        cube = cubejsGenerator(fact, modelspath, cubepath)
+        print(fact)
+    

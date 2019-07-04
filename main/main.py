@@ -1,19 +1,15 @@
 # -*- coding: utf-8 -*-
-from app import *
-from cubejsgenerator import cubejsGenerator, getFactsModels
+from cubejsgenerator import convertModeltoCubejs
 
+#???
 from models.googlemodels import *
 from models.generalmodel import *
 from models.comagic import *
 
+
 def main():
 
-    db.create_all()
-
-    modelspath = './main/models'
-    for fact in getFactsModels(modelspath):
-        cube = cubejsGenerator(fact, modelspath, './cubejs')
-        print(fact)
+    convertModeltoCubejs('./main/models', './cubejs')
 
 if __name__ == '__main__':
     main()

@@ -3,6 +3,7 @@
 	<name>cubejsGenerator</name>
 	<comment></comment>
 	<projects>
+		<project>Test</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
