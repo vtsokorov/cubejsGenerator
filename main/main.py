@@ -6,7 +6,6 @@ import fnmatch
 import inspect
 
 from jinja2 import Template
-
 from app import *
 from models.googlemodels import *
 from models.generalmodel import *
@@ -23,6 +22,7 @@ def findModelsByTable(modelspath, tablename):
                     return classname
     return None
 
+
 def getFactsModels(modelspath):
     listOfFiles = os.listdir(modelspath)
     for file in listOfFiles:
@@ -32,6 +32,7 @@ def getFactsModels(modelspath):
                 if re.match(r".*_facts$", classname.__tablename__):
                     yield classname
 
+
 def addQuotes(line):
     return '`' + line + '`'
 
@@ -40,7 +41,7 @@ def addBrackets(line):
     return '[' + line + ']'
 
 
-def cubejsGenerator(model, modelspath, cubejspath):
+def cubejsGenerator(model, modelspath, cubejspath, measuretypes = dict()):
 
     if os.path.exists(cubejspath+'/'+model.__name__+'.js'):
         return
@@ -80,7 +81,8 @@ def cubejsGenerator(model, modelspath, cubejspath):
                 measureslist.append(measuresMap)
 
             if not column.primary_key and mapTypes[column.type.__class__.__name__] == 'number': 
-                measuresMap.update({column.name: {'sql': addQuotes(column.name), 'type': addQuotes('sum')}})
+                type = measuretypes[column.name] if bool(measuretypes) else 'sum'
+                measuresMap.update({column.name: {'sql': addQuotes(column.name), 'type': addQuotes(type)}})
                 if 'verbose_name' in column.info:
                     measuresMap[column.name].update({'title': addQuotes(column.info['verbose_name'])})
                 measureslist.append(measuresMap)
