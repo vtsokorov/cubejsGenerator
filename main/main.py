@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from cubejsgenerator import convertModeltoCubejs
 
+
 def main():
 
     convertModeltoCubejs('./main/models', './cubejs')
