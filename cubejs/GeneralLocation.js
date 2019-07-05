@@ -4,11 +4,7 @@ cube(`GeneralLocation`, {
      
     joins: { 
     }, 
-    measures: {  
-        count: { 
-            drillMembers: [id],
-            type: `count`
-         } 
+    measures: { 
     }, 
     dimensions: {  
         id: { 

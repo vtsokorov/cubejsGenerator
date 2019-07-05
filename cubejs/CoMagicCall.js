@@ -4,21 +4,7 @@ cube(`CoMagicCall`, {
      
     joins: { 
     }, 
-    measures: {  
-        count: { 
-            drillMembers: [id],
-            type: `count`
-         },  
-        account_id: { 
-            sql: `account_id`,
-            type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
-         },  
-        call_id: { 
-            sql: `call_id`,
-            type: `sum`,
-            title: `Внутренний идентификатор звонка`
-         } 
+    measures: { 
     }, 
     dimensions: {  
         id: { 

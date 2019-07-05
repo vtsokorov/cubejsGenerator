@@ -4,21 +4,7 @@ cube(`AnalyticsGoal`, {
      
     joins: { 
     }, 
-    measures: {  
-        count: { 
-            drillMembers: [id],
-            type: `count`
-         },  
-        account_id: { 
-            sql: `account_id`,
-            type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
-         },  
-        goal_id: { 
-            sql: `goal_id`,
-            type: `sum`,
-            title: `Внутренний идентификатор цели`
-         } 
+    measures: { 
     }, 
     dimensions: {  
         id: { 

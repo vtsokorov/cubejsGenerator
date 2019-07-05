@@ -4,51 +4,7 @@ cube(`GeneralDate`, {
      
     joins: { 
     }, 
-    measures: {  
-        count: { 
-            drillMembers: [id],
-            type: `count`
-         },  
-        year: { 
-            sql: `year`,
-            type: `sum`,
-            title: `Год`
-         },  
-        quarter: { 
-            sql: `quarter`,
-            type: `sum`,
-            title: `Номер квартала`
-         },  
-        month: { 
-            sql: `month`,
-            type: `sum`,
-            title: `Номер месяца`
-         },  
-        week: { 
-            sql: `week`,
-            type: `sum`,
-            title: `Номер недели`
-         },  
-        weekday: { 
-            sql: `weekday`,
-            type: `sum`,
-            title: `Номер дня недели`
-         },  
-        day: { 
-            sql: `day`,
-            type: `sum`,
-            title: `День`
-         },  
-        hour: { 
-            sql: `hour`,
-            type: `sum`,
-            title: `Час`
-         },  
-        minute: { 
-            sql: `minute`,
-            type: `sum`,
-            title: `Минута`
-         } 
+    measures: { 
     }, 
     dimensions: {  
         id: { 

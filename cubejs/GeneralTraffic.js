@@ -4,11 +4,7 @@ cube(`GeneralTraffic`, {
      
     joins: { 
     }, 
-    measures: {  
-        count: { 
-            drillMembers: [id],
-            type: `count`
-         } 
+    measures: { 
     }, 
     dimensions: {  
         id: { 

@@ -4,16 +4,7 @@ cube(`AnalyticsDevice`, {
      
     joins: { 
     }, 
-    measures: {  
-        count: { 
-            drillMembers: [id],
-            type: `count`
-         },  
-        account_id: { 
-            sql: `account_id`,
-            type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
-         } 
+    measures: { 
     }, 
     dimensions: {  
         id: { 

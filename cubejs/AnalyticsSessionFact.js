@@ -31,7 +31,8 @@ cube(`AnalyticsSessionFact`, {
     measures: {  
         count: { 
             drillMembers: [id],
-            type: `count`
+            type: `count`,
+            title: `Идентификатор записи`
          },  
         account_id: { 
             sql: `account_id`,

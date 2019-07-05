@@ -4,31 +4,7 @@ cube(`CoMagicCampaign`, {
      
     joins: { 
     }, 
-    measures: {  
-        count: { 
-            drillMembers: [id],
-            type: `count`
-         },  
-        account_id: { 
-            sql: `account_id`,
-            type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
-         },  
-        campaign_id: { 
-            sql: `campaign_id`,
-            type: `sum`,
-            title: `Внутренний идентификатор кампании`
-         },  
-        costs: { 
-            sql: `costs`,
-            type: `sum`,
-            title: `Расходы`
-         },  
-        cost_ratio: { 
-            sql: `cost_ratio`,
-            type: `sum`,
-            title: `Коэффициент расходов`
-         } 
+    measures: { 
     }, 
     dimensions: {  
         id: { 

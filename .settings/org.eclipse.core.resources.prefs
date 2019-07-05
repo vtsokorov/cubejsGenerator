@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
 encoding//main/cubejsgenerator.py=utf-8
 encoding//main/main.py=utf-8
+encoding//main/models/comagic.py=utf-8
+encoding//main/models/generalmodel.py=utf-8
 encoding//main/models/googlemodels.py=utf-8
