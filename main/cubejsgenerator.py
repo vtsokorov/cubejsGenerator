@@ -10,7 +10,7 @@ from jinja2 import Template
 '''
 todo:
 1. account_id = GeneralAccounts.account_id
-2. Удалить measure из таблиц измерений ***
+2. Удалить measure из таблиц измерений +
 3. Скрывать некоторые поля (shown:)
 Вопросы:
 *Изменил имена модулей
