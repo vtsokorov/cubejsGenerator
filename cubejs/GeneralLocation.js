@@ -10,7 +10,8 @@ cube(`GeneralLocation`, {
         id: { 
             sql: `id`,
             type: `number`,
-            primaryKey: true
+            primaryKey: true,
+            shown: true
          },  
         country_iso: { 
             sql: `country_iso`,

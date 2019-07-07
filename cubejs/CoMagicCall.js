@@ -2,7 +2,11 @@ cube(`CoMagicCall`, {
     sql: `select * from comagic_calls`,
     title: `Параметры звонков`,
      
-    joins: { 
+    joins: {  
+        GeneralAccounts: { 
+            relationship: `belongsTo`,
+            sql: `${CoMagicCall}.account_id = ${GeneralAccounts}.account_id`
+         } 
     }, 
     measures: { 
     }, 
@@ -10,7 +14,8 @@ cube(`CoMagicCall`, {
         id: { 
             sql: `id`,
             type: `number`,
-            primaryKey: true
+            primaryKey: true,
+            shown: true
          },  
         finish_reason: { 
             sql: `finish_reason`,

@@ -2,7 +2,11 @@ cube(`CoMagicCampaign`, {
     sql: `select * from comagic_campaigns`,
     title: `Параметры кампаний`,
      
-    joins: { 
+    joins: {  
+        GeneralAccounts: { 
+            relationship: `belongsTo`,
+            sql: `${CoMagicCampaign}.account_id = ${GeneralAccounts}.account_id`
+         } 
     }, 
     measures: { 
     }, 
@@ -10,7 +14,8 @@ cube(`CoMagicCampaign`, {
         id: { 
             sql: `id`,
             type: `number`,
-            primaryKey: true
+            primaryKey: true,
+            shown: true
          },  
         name: { 
             sql: `name`,

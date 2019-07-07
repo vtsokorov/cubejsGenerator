@@ -3,6 +3,10 @@ cube(`AnalyticsMcfFact`, {
     title: `Многоканальные последовательности`,
      
     joins: {  
+        GeneralAccounts: { 
+            relationship: `belongsTo`,
+            sql: `${AnalyticsMcfFact}.account_id = ${GeneralAccounts}.account_id`
+         },  
         GeneralDate: { 
             relationship: `belongsTo`,
             sql: `${AnalyticsMcfFact}.dates_id = ${GeneralDate}.id`
@@ -17,11 +21,6 @@ cube(`AnalyticsMcfFact`, {
             drillMembers: [id],
             type: `count`,
             title: `Идентификатор записи`
-         },  
-        account_id: { 
-            sql: `account_id`,
-            type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
          },  
         assisted_count: { 
             sql: `assisted_count`,
@@ -68,7 +67,8 @@ cube(`AnalyticsMcfFact`, {
         id: { 
             sql: `id`,
             type: `number`,
-            primaryKey: true
+            primaryKey: true,
+            shown: true
          },  
         conversion_type: { 
             sql: `conversion_type`,

@@ -2,7 +2,11 @@ cube(`AnalyticsDevice`, {
     sql: `select * from analytics_devices`,
     title: `Параметры устройств`,
      
-    joins: { 
+    joins: {  
+        GeneralAccounts: { 
+            relationship: `belongsTo`,
+            sql: `${AnalyticsDevice}.account_id = ${GeneralAccounts}.account_id`
+         } 
     }, 
     measures: { 
     }, 
@@ -10,7 +14,8 @@ cube(`AnalyticsDevice`, {
         id: { 
             sql: `id`,
             type: `number`,
-            primaryKey: true
+            primaryKey: true,
+            shown: true
          },  
         category: { 
             sql: `category`,

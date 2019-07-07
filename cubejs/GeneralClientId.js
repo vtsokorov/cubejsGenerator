@@ -10,7 +10,8 @@ cube(`GeneralClientId`, {
         id: { 
             sql: `id`,
             type: `number`,
-            primaryKey: true
+            primaryKey: true,
+            shown: true
          },  
         clientid: { 
             sql: `clientid`,

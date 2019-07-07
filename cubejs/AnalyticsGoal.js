@@ -2,7 +2,11 @@ cube(`AnalyticsGoal`, {
     sql: `select * from analytics_goals`,
     title: `Параметры целей`,
      
-    joins: { 
+    joins: {  
+        GeneralAccounts: { 
+            relationship: `belongsTo`,
+            sql: `${AnalyticsGoal}.account_id = ${GeneralAccounts}.account_id`
+         } 
     }, 
     measures: { 
     }, 
@@ -10,7 +14,8 @@ cube(`AnalyticsGoal`, {
         id: { 
             sql: `id`,
             type: `number`,
-            primaryKey: true
+            primaryKey: true,
+            shown: true
          },  
         name: { 
             sql: `name`,

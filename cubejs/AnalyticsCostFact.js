@@ -3,6 +3,10 @@ cube(`AnalyticsCostFact`, {
     title: `Статистика по объявлениям`,
      
     joins: {  
+        GeneralAccounts: { 
+            relationship: `belongsTo`,
+            sql: `${AnalyticsCostFact}.account_id = ${GeneralAccounts}.account_id`
+         },  
         GeneralDate: { 
             relationship: `belongsTo`,
             sql: `${AnalyticsCostFact}.dates_id = ${GeneralDate}.id`
@@ -21,11 +25,6 @@ cube(`AnalyticsCostFact`, {
             drillMembers: [id],
             type: `count`,
             title: `Идентификатор записи`
-         },  
-        account_id: { 
-            sql: `account_id`,
-            type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
          },  
         impressions_context: { 
             sql: `impressions_context`,
@@ -77,7 +76,8 @@ cube(`AnalyticsCostFact`, {
         id: { 
             sql: `id`,
             type: `number`,
-            primaryKey: true
+            primaryKey: true,
+            shown: true
          } 
     }
 });

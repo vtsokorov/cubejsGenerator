@@ -9,7 +9,7 @@ from jinja2 import Template
 
 '''
 todo:
-1. account_id = GeneralAccounts.account_id
+1. account_id = GeneralAccounts.account_id (account_id = general_accounts.account_id)+
 2. Удалить measure из таблиц измерений +
 3. Скрывать некоторые поля (shown:)
 Вопросы:
@@ -41,7 +41,6 @@ def factsModels(modulelist, package='models'):
         for name, classname in inspect.getmembers(eval(package+'.'+module), inspect.isclass):
             if re.match(r".*_facts$", classname.__tablename__):
                 yield classname
-    return None
 
 
 def addQuotes(line):
@@ -75,17 +74,26 @@ def cubejsGenerator(model, modules, cubejspath, measuretypes = dict()):
         dimensionMap = dict()
         measuresMap = dict()
 
-        if bool(column.foreign_keys):
-            fk = next(iter(column.foreign_keys))
-            mainTable, pkIndex = fk._get_colspec().rsplit('.', 2)
-            dinamycModel = findModelsByTable(modules, mainTable)
-            cubejsGenerator(dinamycModel, modules, cubejspath)
-            if mainTable in model.__mapper__.relationships.keys():
+        if bool(column.foreign_keys) or (column.name == 'account_id' and model.__tablename__ != 'general_accounts'):
+            if not bool(column.foreign_keys):
+                mainTable = 'general_accounts'
+                pkIndex = 'account_id'
+                dinamycModel = findModelsByTable(modules, mainTable)
+                cubejsGenerator(dinamycModel, modules, cubejspath)
                 join = addQuotes('${'+model.__name__+'}.'+column.name+' = ${'+dinamycModel.__name__+'}.'+pkIndex)
                 joinsList.append({dinamycModel.__name__: {'relationship': addQuotes('belongsTo'), 'sql': join}})
+            else:    
+                fk = next(iter(column.foreign_keys))
+                mainTable, pkIndex = fk._get_colspec().rsplit('.', 2)
+                dinamycModel = findModelsByTable(modules, mainTable)
+                cubejsGenerator(dinamycModel, modules, cubejspath)
+                if mainTable in model.__mapper__.relationships.keys():
+                    join = addQuotes('${'+model.__name__+'}.'+column.name+' = ${'+dinamycModel.__name__+'}.'+pkIndex)
+                    joinsList.append({dinamycModel.__name__: {'relationship': addQuotes('belongsTo'), 'sql': join}})
         else:
             if column.primary_key:
                 dimensionMap.update({column.name: {'sql': addQuotes(column.name), 'type': addQuotes(mapTypes[column.type.__class__.__name__]), 'primaryKey': 'true'}})
+                dimensionMap[column.name].update({'shown': 'true'})
                 dimensionlist.append(dimensionMap)
 
             '''Добовляем меры только в таблицы фактов'''

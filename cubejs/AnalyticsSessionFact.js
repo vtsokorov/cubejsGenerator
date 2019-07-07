@@ -3,6 +3,10 @@ cube(`AnalyticsSessionFact`, {
     title: `Посещения сайта`,
      
     joins: {  
+        GeneralAccounts: { 
+            relationship: `belongsTo`,
+            sql: `${AnalyticsSessionFact}.account_id = ${GeneralAccounts}.account_id`
+         },  
         GeneralDate: { 
             relationship: `belongsTo`,
             sql: `${AnalyticsSessionFact}.dates_id = ${GeneralDate}.id`
@@ -34,11 +38,6 @@ cube(`AnalyticsSessionFact`, {
             type: `count`,
             title: `Идентификатор записи`
          },  
-        account_id: { 
-            sql: `account_id`,
-            type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
-         },  
         sessions: { 
             sql: `sessions`,
             type: `sum`,
@@ -64,7 +63,8 @@ cube(`AnalyticsSessionFact`, {
         id: { 
             sql: `id`,
             type: `number`,
-            primaryKey: true
+            primaryKey: true,
+            shown: true
          },  
         session_id: { 
             sql: `session_id`,

@@ -3,6 +3,10 @@ cube(`CoMagicCallFact`, {
     title: `Звонки`,
      
     joins: {  
+        GeneralAccounts: { 
+            relationship: `belongsTo`,
+            sql: `${CoMagicCallFact}.account_id = ${GeneralAccounts}.account_id`
+         },  
         GeneralDate: { 
             relationship: `belongsTo`,
             sql: `${CoMagicCallFact}.dates_id = ${GeneralDate}.id`
@@ -37,11 +41,6 @@ cube(`CoMagicCallFact`, {
             drillMembers: [id],
             type: `count`,
             title: `Идентификатор записи`
-         },  
-        account_id: { 
-            sql: `account_id`,
-            type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
          },  
         wait_duration: { 
             sql: `wait_duration`,
@@ -78,7 +77,8 @@ cube(`CoMagicCallFact`, {
         id: { 
             sql: `id`,
             type: `number`,
-            primaryKey: true
+            primaryKey: true,
+            shown: true
          } 
     }
 });

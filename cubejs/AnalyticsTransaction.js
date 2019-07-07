@@ -2,7 +2,11 @@ cube(`AnalyticsTransaction`, {
     sql: `select * from analytics_transactions`,
     title: `Параметры заказов`,
      
-    joins: { 
+    joins: {  
+        GeneralAccounts: { 
+            relationship: `belongsTo`,
+            sql: `${AnalyticsTransaction}.account_id = ${GeneralAccounts}.account_id`
+         } 
     }, 
     measures: { 
     }, 
@@ -10,7 +14,8 @@ cube(`AnalyticsTransaction`, {
         id: { 
             sql: `id`,
             type: `number`,
-            primaryKey: true
+            primaryKey: true,
+            shown: true
          },  
         transaction_id: { 
             sql: `transaction_id`,

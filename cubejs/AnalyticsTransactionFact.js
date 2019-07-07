@@ -3,6 +3,10 @@ cube(`AnalyticsTransactionFact`, {
     title: `Оформленные заказы`,
      
     joins: {  
+        GeneralAccounts: { 
+            relationship: `belongsTo`,
+            sql: `${AnalyticsTransactionFact}.account_id = ${GeneralAccounts}.account_id`
+         },  
         GeneralDate: { 
             relationship: `belongsTo`,
             sql: `${AnalyticsTransactionFact}.dates_id = ${GeneralDate}.id`
@@ -38,11 +42,6 @@ cube(`AnalyticsTransactionFact`, {
             type: `count`,
             title: `Идентификатор записи`
          },  
-        account_id: { 
-            sql: `account_id`,
-            type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
-         },  
         revenue: { 
             sql: `revenue`,
             type: `sum`,
@@ -63,7 +62,8 @@ cube(`AnalyticsTransactionFact`, {
         id: { 
             sql: `id`,
             type: `number`,
-            primaryKey: true
+            primaryKey: true,
+            shown: true
          } 
     }
 });

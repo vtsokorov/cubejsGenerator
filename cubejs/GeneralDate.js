@@ -10,7 +10,8 @@ cube(`GeneralDate`, {
         id: { 
             sql: `id`,
             type: `number`,
-            primaryKey: true
+            primaryKey: true,
+            shown: true
          },  
         quarter_label: { 
             sql: `quarter_label`,

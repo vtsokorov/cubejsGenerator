@@ -3,6 +3,10 @@ cube(`AnalyticsGoalFact`, {
     title: `Достигнутые цели`,
      
     joins: {  
+        GeneralAccounts: { 
+            relationship: `belongsTo`,
+            sql: `${AnalyticsGoalFact}.account_id = ${GeneralAccounts}.account_id`
+         },  
         GeneralDate: { 
             relationship: `belongsTo`,
             sql: `${AnalyticsGoalFact}.dates_id = ${GeneralDate}.id`
@@ -38,11 +42,6 @@ cube(`AnalyticsGoalFact`, {
             type: `count`,
             title: `Идентификатор записи`
          },  
-        account_id: { 
-            sql: `account_id`,
-            type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
-         },  
         completions: { 
             sql: `completions`,
             type: `sum`,
@@ -58,7 +57,8 @@ cube(`AnalyticsGoalFact`, {
         id: { 
             sql: `id`,
             type: `number`,
-            primaryKey: true
+            primaryKey: true,
+            shown: true
          } 
     }
 });

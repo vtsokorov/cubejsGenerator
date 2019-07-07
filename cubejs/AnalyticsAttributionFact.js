@@ -3,6 +3,10 @@ cube(`AnalyticsAttributionFact`, {
     title: `Атрибуция трафика`,
      
     joins: {  
+        GeneralAccounts: { 
+            relationship: `belongsTo`,
+            sql: `${AnalyticsAttributionFact}.account_id = ${GeneralAccounts}.account_id`
+         },  
         GeneralDate: { 
             relationship: `belongsTo`,
             sql: `${AnalyticsAttributionFact}.dates_id = ${GeneralDate}.id`
@@ -34,11 +38,6 @@ cube(`AnalyticsAttributionFact`, {
             type: `count`,
             title: `Идентификатор записи`
          },  
-        account_id: { 
-            sql: `account_id`,
-            type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
-         },  
         processor_id: { 
             sql: `processor_id`,
             type: `sum`,
@@ -64,7 +63,8 @@ cube(`AnalyticsAttributionFact`, {
         id: { 
             sql: `id`,
             type: `number`,
-            primaryKey: true
+            primaryKey: true,
+            shown: true
          },  
         last_session: { 
             sql: `last_session`,

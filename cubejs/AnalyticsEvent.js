@@ -2,7 +2,11 @@ cube(`AnalyticsEvent`, {
     sql: `select * from analytics_events`,
     title: `Параметры событий`,
      
-    joins: { 
+    joins: {  
+        GeneralAccounts: { 
+            relationship: `belongsTo`,
+            sql: `${AnalyticsEvent}.account_id = ${GeneralAccounts}.account_id`
+         } 
     }, 
     measures: { 
     }, 
@@ -10,7 +14,8 @@ cube(`AnalyticsEvent`, {
         id: { 
             sql: `id`,
             type: `number`,
-            primaryKey: true
+            primaryKey: true,
+            shown: true
          },  
         category: { 
             sql: `category`,

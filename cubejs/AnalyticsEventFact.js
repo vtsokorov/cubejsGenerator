@@ -3,6 +3,10 @@ cube(`AnalyticsEventFact`, {
     title: `Достигнутые события`,
      
     joins: {  
+        GeneralAccounts: { 
+            relationship: `belongsTo`,
+            sql: `${AnalyticsEventFact}.account_id = ${GeneralAccounts}.account_id`
+         },  
         GeneralDate: { 
             relationship: `belongsTo`,
             sql: `${AnalyticsEventFact}.dates_id = ${GeneralDate}.id`
@@ -38,11 +42,6 @@ cube(`AnalyticsEventFact`, {
             type: `count`,
             title: `Идентификатор записи`
          },  
-        account_id: { 
-            sql: `account_id`,
-            type: `sum`,
-            title: `Идентификатор подключенного аккаунта`
-         },  
         total_events: { 
             sql: `total_events`,
             type: `sum`,
@@ -63,7 +62,8 @@ cube(`AnalyticsEventFact`, {
         id: { 
             sql: `id`,
             type: `number`,
-            primaryKey: true
+            primaryKey: true,
+            shown: true
          } 
     }
 });
