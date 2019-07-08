@@ -6,15 +6,6 @@ import inspect
 
 from jinja2 import Template
 
-'''
-todo:
-1. account_id = GeneralAccounts.account_id (account_id = general_accounts.account_id)+
-2. Удалить measure из таблиц измерений +
-3. Скрывать некоторые поля (shown:)+
-Вопросы:
-*Изменил имена модулей
-'''
-
 
 def getModuleNameList(modelspath):
     listOfFiles = list(map(os.path.abspath, os.listdir(modelspath)))
