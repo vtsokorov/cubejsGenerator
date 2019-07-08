@@ -14,7 +14,7 @@ class GeneralLocation(db.Model):
     city = db.Column(db.Unicode(64), info={'verbose_name': 'Город'})
     latitude = db.Column(db.Unicode(32), info={'verbose_name': 'Широта'})
     longitude = db.Column(db.Unicode(32), info={'verbose_name': 'Долгота'})
-    location_hash = db.Column(db.Unicode(32))
+    location_hash = db.Column(db.Unicode(32), info={'shown': 'false'})
 
     __table_args__ = (
         db.Index('general_locations_idx_1', location_hash),

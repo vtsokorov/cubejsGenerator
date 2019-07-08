@@ -11,7 +11,7 @@ from jinja2 import Template
 todo:
 1. account_id = GeneralAccounts.account_id (account_id = general_accounts.account_id)+
 2. Удалить measure из таблиц измерений +
-3. Скрывать некоторые поля (shown:)
+3. Скрывать некоторые поля (shown:)+
 Вопросы:
 *Изменил имена модулей
 '''
@@ -82,7 +82,7 @@ def cubejsGenerator(model, modules, cubejspath, measuretypes = dict()):
                 cubejsGenerator(dinamycModel, modules, cubejspath)
                 join = addQuotes('${'+model.__name__+'}.'+column.name+' = ${'+dinamycModel.__name__+'}.'+pkIndex)
                 joinsList.append({dinamycModel.__name__: {'relationship': addQuotes('belongsTo'), 'sql': join}})
-            else:    
+            else:
                 fk = next(iter(column.foreign_keys))
                 mainTable, pkIndex = fk._get_colspec().rsplit('.', 2)
                 dinamycModel = findModelsByTable(modules, mainTable)
@@ -115,6 +115,8 @@ def cubejsGenerator(model, modules, cubejspath, measuretypes = dict()):
                 dimensionMap.update({column.name: {'sql': addQuotes(column.name), 'type': addQuotes(mapTypes[column.type.__class__.__name__])}})
                 if 'verbose_name' in column.info:
                     dimensionMap[column.name].update({'title': addQuotes(column.info['verbose_name'])})
+                if 'shown' in column.info:
+                    dimensionMap[column.name].update({'shown': column.info['shown']})
                 dimensionlist.append(dimensionMap)
 
     params['CUBECONTENT'] = [{'joins': joinsList}, {'measures': measureslist}, {'dimensions': dimensionlist}]

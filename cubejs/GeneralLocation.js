@@ -50,7 +50,8 @@ cube(`GeneralLocation`, {
          },  
         location_hash: { 
             sql: `location_hash`,
-            type: `string`
+            type: `string`,
+            shown: false
          } 
     }
 });
