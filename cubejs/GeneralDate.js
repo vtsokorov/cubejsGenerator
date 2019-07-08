@@ -13,6 +13,11 @@ cube(`GeneralDate`, {
             primaryKey: true,
             shown: true
          },  
+        full_date: { 
+            sql: `full_date`,
+            type: `time`,
+            title: `Дата и время`
+         },  
         quarter_label: { 
             sql: `quarter_label`,
             type: `string`,
@@ -32,6 +37,11 @@ cube(`GeneralDate`, {
             sql: `date_hash`,
             type: `string`,
             title: `Хеш-сумма записи`
+         },  
+        simple_date: { 
+            sql: `simple_date`,
+            type: `time`,
+            title: `Дата`
          } 
     }
 });

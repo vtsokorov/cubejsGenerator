@@ -109,9 +109,11 @@ def cubejsGenerator(model, modules, cubejspath, measuretypes = dict()):
                 measuresMap.update({column.name: {'sql': addQuotes(column.name), 'type': addQuotes(type)}})
                 if 'verbose_name' in column.info:
                     measuresMap[column.name].update({'title': addQuotes(column.info['verbose_name'])})
+                if 'shown' in column.info:
+                    measuresMap[column.name].update({'shown': addQuotes(column.info['shown'])})
                 measureslist.append(measuresMap)
 
-            if not column.primary_key and mapTypes[column.type.__class__.__name__] == 'string':
+            if not column.primary_key and (mapTypes[column.type.__class__.__name__] == 'string' or mapTypes[column.type.__class__.__name__] == 'time'):
                 dimensionMap.update({column.name: {'sql': addQuotes(column.name), 'type': addQuotes(mapTypes[column.type.__class__.__name__])}})
                 if 'verbose_name' in column.info:
                     dimensionMap[column.name].update({'title': addQuotes(column.info['verbose_name'])})

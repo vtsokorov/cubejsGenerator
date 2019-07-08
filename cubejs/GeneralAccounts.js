@@ -32,6 +32,16 @@ cube(`GeneralAccounts`, {
             sql: `status`,
             type: `string`,
             title: `Статус загрузки`
+         },  
+        interval_start: { 
+            sql: `interval_start`,
+            type: `time`,
+            title: `Дата начала интервала`
+         },  
+        interval_end: { 
+            sql: `interval_end`,
+            type: `time`,
+            title: `Дата окончания интервала`
          } 
     }
 });
